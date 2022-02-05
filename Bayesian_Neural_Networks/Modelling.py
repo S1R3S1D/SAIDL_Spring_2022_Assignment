@@ -29,7 +29,7 @@ def init_parameters(I, H, O):
     return (weights, biases)
 
 #A function to compute using the neural network with parameters of the model , a sigmoid activation function and a binary step function when evaluation mode is triggered
-def NN_Compute(input, parameters, eval = False):
+def NN_Compute(input, parameters, evals = False):
     (weights, biases) = parameters
     output = None
     for i in range(len(weights)):
@@ -38,7 +38,7 @@ def NN_Compute(input, parameters, eval = False):
             output = sigmoid(output)
         input = output
 
-    if eval:
+    if evals:
         output = binary_step(output, 0.5)
 
     return output
