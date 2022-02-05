@@ -6,7 +6,7 @@ from tqdm import tqdm
 import pandas as pd
 from Helper_Functions import *
 
-
+#Function that initializes parameters according to the number of inputs I, the hidden layers H (vector) and outputs O
 def init_parameters(I, H, O):
     weights = []
     biases = []
@@ -28,7 +28,7 @@ def init_parameters(I, H, O):
 
     return (weights, biases)
 
-
+#A function to compute using the neural network with parameters of the model , a sigmoid activation function and a binary step function when evaluation mode is triggered
 def NN_Compute(input, parameters, eval = False):
     (weights, biases) = parameters
     output = None
@@ -43,7 +43,7 @@ def NN_Compute(input, parameters, eval = False):
 
     return output
 
-
+#A function that draws parameters from a non stationary distribution with means from the previous parameters
 def new_params(parameters, scale):
     (w_o, b_o) = parameters
 
@@ -64,6 +64,7 @@ def new_params(parameters, scale):
 
     return new_parameters
 
+#Afunction to calculate the log likelihood
 def LL_Calc(X, Y, sigma):
   ll = sum(np.log([normal(x, y, sigma) for x, y in zip(X, Y)]))
   return ll
