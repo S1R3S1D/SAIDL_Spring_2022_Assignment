@@ -29,7 +29,7 @@ def init_parameters(I, H, O):
     return (weights, biases)
 
 
-def NN_Compute(input, parameters):
+def NN_Compute(input, parameters, eval = False):
     (weights, biases) = parameters
     output = None
     for i in range(len(weights)):
@@ -38,7 +38,8 @@ def NN_Compute(input, parameters):
             output = sigmoid(output)
         input = output
 
-    # output = binary_step(output, 0.5)
+    if eval:
+        output = binary_step(output, 0.5)
 
     return output
 
